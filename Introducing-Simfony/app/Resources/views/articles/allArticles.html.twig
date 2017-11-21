@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>List Articles</h1>
+    <table border="1">
+        <tr>
+            <th>Title</th>
+            <th>Date</th>
+        </tr>
+        {% for article in articles %}
+            <tr>
+                <td><a href="{{ path('view_article', {'id': article.id}) }}">{{ article.title }}</a></td>
+            <td>{{ article.createDate|date('d.m.Y') }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

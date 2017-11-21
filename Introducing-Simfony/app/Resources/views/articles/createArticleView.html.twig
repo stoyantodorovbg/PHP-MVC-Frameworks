@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Create article</h1>
+    <form method="post">
+        <label>
+            Title:
+        </label>
+        <br/>
+        <input type="text" name="article[title]">
+        <br/><br/>
+        <label>
+            Content:
+        </label>
+        <br/>
+        <textarea name="article[body]"></textarea>
+        <br/><br/>
+        <input type="submit" value="create">
+
+    </form>
+{% endblock %}

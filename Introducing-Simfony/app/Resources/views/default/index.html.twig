@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Home page</h1>
+
+    <a href="/create_article_view">Create new article</a>
+    <br/>
+    <a href="{{ path('all_articles') }}">Show all articles</a>
+{% endblock %}
