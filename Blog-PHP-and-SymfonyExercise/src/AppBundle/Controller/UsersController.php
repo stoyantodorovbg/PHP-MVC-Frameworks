@@ -38,4 +38,6 @@ class UsersController extends Controller
         }
         return $this->render("default/register.html.twig");
     }
+
+
 }

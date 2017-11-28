@@ -47,9 +47,17 @@ class User implements UserInterface
     /**
      * @var ArrayCollection
      *
-     * @ORM/ManyToOne
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Article", mappedBy="author")
      */
     private $articles;
+
+    /**
+     * User constructor.
+     */
+    public function __construct()
+    {
+        $this->articles = new ArrayCollection();
+    }
 
 
     /**
@@ -159,5 +167,27 @@ class User implements UserInterface
     {
         // TODO: Implement eraseCredentials() method.
     }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArticles()
+    {
+        return $this->articles;
+    }
+
+    /**
+     * @param \AppBundle\Entity\Article $article
+     *
+     * @return User
+     */
+    public function addPost(Article $article)
+    {
+        $this->articles[] = $article;
+
+        return $this;
+    }
+
+
 }
 

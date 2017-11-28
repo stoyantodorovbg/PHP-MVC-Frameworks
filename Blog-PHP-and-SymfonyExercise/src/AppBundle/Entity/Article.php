@@ -57,10 +57,15 @@ class Article
     /**
      * @var User
      *
-     * @ORM/ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="articles")
-     * @ORM/JoinColumn(name="authorId", referencedColumn="id")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="articles")
+     * @ORM\JoinColumn(name="authorId", referencedColumnName="id")
      */
     private $author;
+
+    public function __construct()
+    {
+        $this->dateAdded = new \DateTime('now');
+    }
 
 
     /**
@@ -74,26 +79,23 @@ class Article
     }
 
     /**
-     * @return string
+     * @param
      */
     public function getSummary()
     {
         if ($this->summary === null) {
-            $this->getSummary();
+            $this->setSummary();
         }
+
         return $this->summary;
     }
 
     /**
-     * @param string $summary
+     * @return string
      */
-    public function setSummary($summary)
+    public function setSummary()
     {
-        $this->summary = substr(
-            $this->getContent(),
-            0,
-            ($this->getContent() / 2)
-            .'...');
+        $this->summary = substr($this->getContent(), 0, strlen($this->getContent()) / 2) ."...";
     }
 
     /**
