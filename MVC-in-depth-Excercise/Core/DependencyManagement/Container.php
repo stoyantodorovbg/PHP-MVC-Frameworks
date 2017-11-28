@@ -3,6 +3,9 @@
 
 namespace Core\DependencyManagement;
 
+use Core\ApplicationInterface;
+use Core\Application;
+
 
 class Container implements ContainerInterface
 {
@@ -16,6 +19,7 @@ class Container implements ContainerInterface
         if (array_key_exists($interfaceName, $this->cache)) {
             return $this->cache[$interfaceName];
         }
+
 
         if (interface_exists($interfaceName)) {
             $className = $this->dependencies[$interfaceName];
@@ -35,7 +39,8 @@ class Container implements ContainerInterface
 
         $resolvedParameters = [];
         foreach ($constructorInfo->getParameters() as $parameter) {
-            $resolvedParameters[] = $this->resolve($parameter->getClass()->getName());
+            $resolvedParameters[] =
+                $this->resolve($parameter->getClass()->getName());
         }
 
         $obj = $classInfo->newInstanceArgs($resolvedParameters);
