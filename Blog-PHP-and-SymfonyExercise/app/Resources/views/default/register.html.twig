@@ -1,16 +1,42 @@
 {% extends 'base.html.twig' %}
-
-{% block body %}
+{% block body_id 'login' %}
+{% block main %}
+<div class="container body-content span=8 offset=2">
+    <div class="well">
     <h1>User register</h1>
-    <form method="post" name="register" action="{{ path('register_user') }}">
-        Email: <input type="text" name="user[email]"><br/>
-        Full name: <input type="text" name="user[fullName]"><br/>
-        Password: <input type="password" name="user[password]"><br/>
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token('register') }}"/>
-        <input type="submit">
+    <form class="form-horizontal" method="post" name="register" action="{{ path('register_user') }}">
+        <fieldset>
+            <div class="form-group">
+                <label class="col-sm-4 control-label" for="user_email">Email</label>
+                <div class="col-sm-4 ">
+                    <input type="text" name="user[email]"><br/>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label class="col-sm-4 control-label" for="user_email">Password</label>
+                <div class="col-sm-4 ">
+                    <input type="password" name="user[password]"><br/>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label class="col-sm-4 control-label" for="user_email">Full name</label>
+                <div class="col-sm-4 ">
+                    <input type="text" name="user[fullName]"><br/>
+                </div>
+            </div>
+        </fieldset>
+            <div class="form-group">
+                <div class="col-sm-4 col-sm-offset-4">
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('register') }}"/>
+                    <input type="submit" class="btn btn-success">
+            </div>
+        </div>
     </form>
+</div>
+</div>
 {% endblock %}
 
-{% block stylesheets %}
-
-{% endblock %}

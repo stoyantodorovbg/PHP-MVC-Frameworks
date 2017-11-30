@@ -1,0 +1,13 @@
+{% extends 'baseTest.html.twig' %}
+
+{% block title %} index {% endblock %}
+
+
+{% block body %}
+    {{ parent() }}
+    {% block inside_content %}
+        other content
+    {% endblock %}
+
+zdrasti
+{% endblock %}

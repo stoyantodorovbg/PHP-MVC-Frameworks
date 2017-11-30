@@ -1,0 +1,13 @@
+<h1>Articles</h1>
+<ol>
+{% for article in articles %}
+    <li><a href="{{ path('article_view', {'id': article.id}) }}">{{ article.title }} -
+            {{ article.dateCreated | date('d.m.Y.') }}</a>
+    <a href="{{ path('article_update', {'id': article.id}) }}">edit</a>
+        |
+    <a href="{{ path('article_delete', {'id': article.id}) }}">delete</a>
+    </li>
+{% endfor %}
+</ol>
+
+<a href="{{ path('article_create') }}">article create</a>

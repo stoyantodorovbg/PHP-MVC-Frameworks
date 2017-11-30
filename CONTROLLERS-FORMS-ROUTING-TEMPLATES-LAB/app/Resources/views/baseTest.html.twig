@@ -1,0 +1,22 @@
+<html>
+<head>
+    <title>{% block title %} default title {% endblock %}</title>
+    <style>
+        {% block css %}
+        body {
+            background: lightyellow;
+        }
+        {% endblock %}
+    </style>
+</head>
+<body>
+
+{% block body %}
+    {% block inside_content %}
+    content
+    {% endblock %}
+
+default body
+{% endblock %}
+</body>
+</html>

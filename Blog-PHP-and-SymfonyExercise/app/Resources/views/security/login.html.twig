@@ -1,15 +1,37 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <div class="container body-content span=8 offset=2">
+        <div class="well">
     <h1>User login</h1>
-    <form name="authenticate" method="post" action="{{ path('security_login') }}">
-        Username: <input type="text" name="_username"><br/>
-        Password: <input type="password" name="_password"><br/>
+
+    <form class="form-horizontal" name="authenticate" method="post" action="{{ path('security_login') }}">
+        <fieldset>
+            <div class="form-group">
+                <label class="col-sm-4 control-label" for="user_email">Email</label>
+                <div class="col-sm-4 ">
+                    <input type="text" name="_username"><br/>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label class="col-sm-4 control-label" for="user_email">Password</label>
+                <div class="col-sm-4 ">
+                    <input type="password" name="_password"><br/>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <div class="col-sm-4 ">
         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
         <input type="submit">
+                </div>
+            </div>
+        </fieldset>
     </form>
+    </div>
+</div>
 {% endblock %}
 
-{% block stylesheets %}
-
-{% endblock %}
